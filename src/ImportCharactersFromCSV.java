@@ -22,7 +22,8 @@ public class ImportCharactersFromCSV {
                 String characterType = characterData[0];
 
                 if (!characterType.equals("Wizard") && !characterType.equals("Warrior")) {
-                    throw new IOException("A character must be a Wizard or a Warrior");
+                    //throw new IOException("A character must be a Wizard or a Warrior");
+                    System.err.println("A character must be a Wizard or a Warrior");
                 }
 
                 String name = characterData[1];
@@ -45,7 +46,7 @@ public class ImportCharactersFromCSV {
             scanner.close();
 
         } catch (FileNotFoundException fnfe) {
-            System.out.println("Hey that file doesn't exist!");
+            System.err.println("Hey that file doesn't exist!");
         } catch (NumberFormatException numberFormatException) {
             System.err.println(numberFormatException);
         }
