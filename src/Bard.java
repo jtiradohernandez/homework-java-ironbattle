@@ -1,6 +1,15 @@
 public class Bard {
     public void introducesStory() {
+        String titleBanner = "  ____  _                          _____            _               \n" +
+                " |  _ \\(_)                        |  __ \\          | |              \n" +
+                " | |_) |_ _ __   __ _ _ __ _   _  | |__) |___  __ _| |_ __ ___  ___ \n" +
+                " |  _ <| | '_ \\ / _` | '__| | | | |  _  // _ \\/ _` | | '_ ` _ \\/ __|\n" +
+                " | |_) | | | | | (_| | |  | |_| | | | \\ \\  __/ (_| | | | | | | \\__ \\\n" +
+                " |____/|_|_| |_|\\__,_|_|   \\__, | |_|  \\_\\___|\\__,_|_|_| |_| |_|___/\n" +
+                "                            __/ |                                   \n" +
+                "                           |___/                                    ";
         System.out.println("Welcome to the Binary Realms.\n" +
+                titleBanner + "\n" +
                 "In a land where legends are forged and destinies entwined.\n" +
                 "Amidst the dappled shadows, beneath the canopy's verdant embrace, two figures emerge.\n" +
                 "Their resolve as unyielding as the ancient oaks that watch over their battle.\n");
