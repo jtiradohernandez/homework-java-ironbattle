@@ -1,15 +1,24 @@
+import java.util.Random;
+
 public class Wizard extends Character {
     private int mana;
     private int intelligence;
+    private static final int[] HP_RANGE = {50, 100};
     private final int[] MANA_RANGE = {10, 50};
     private final int[] INTELLIGENCE_RANGE = {1, 50};
-
     private final int FIREBALL_MANA = 5;
+    private static final String[] wizardsNames = new String[]{"Merlin", "Gandalf", "Severus", "Alatar", "Dumbledore", "Rincewind", "Voldemort", "Albus", "Asterope", "Astra", "Atlantes", "Beatrix", "Belinda", "Fawley", "Glinda", "Gwydion", "Jadis", "Jareth", "Morgan", "Potter", "Prospero", "Radagast", "Saruman", "Thoth-Amon"};
 
     public Wizard(String name, int hp, int mana, int intelligence) {
         super(name, hp); //TODO: check hp range (50-100)
         setMana(mana);
         setIntelligence(intelligence);
+    }
+
+    public Wizard () {
+        super(randomName(), randomInt(HP_RANGE[0], HP_RANGE[1]));
+        setMana(randomInt(MANA_RANGE[0], MANA_RANGE[1]));
+        setIntelligence(randomInt(INTELLIGENCE_RANGE[0], INTELLIGENCE_RANGE[1]));
     }
 
     public int getMana() {
@@ -51,6 +60,8 @@ public class Wizard extends Character {
         }
     }
 
+    public Character clone(){return new Wizard(getName(), getHp(), getMana(),getIntelligence());}
+
     private void fireball(Character character) {
         setMana(getMana()-FIREBALL_MANA);
         character.setHp(character.getHp()-getIntelligence());
@@ -62,5 +73,11 @@ public class Wizard extends Character {
 
         setMana(getMana()+MANA_RECOVER);
         character.setHp(character.getHp()-HP_LOSS);
+    }
+
+
+    public static String randomName() {
+        Random random = new Random();
+        return wizardsNames[random.nextInt(wizardsNames.length)];
     }
 }

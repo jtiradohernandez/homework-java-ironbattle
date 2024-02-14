@@ -1,3 +1,5 @@
+import java.util.Random;
+
 // A Warrior is a Character that fights by attacking. Attacks inflict damage and in order to do one,
 // stamina is required.
 public class Warrior extends Character {
@@ -10,11 +12,32 @@ public class Warrior extends Character {
     private final int HP_MIN = 100;
     private final int HP_MAX = 200;
     private final int HEAVY_ATTACK_STAMINA = 5;
+    private static final String[] warriorsNames = new String[]{"Aragorn", "Xena", "Conan", "Mulán", "Wonder Woman", "Samurai Jack", "Thor", "Brienne of Tarth", "Leonidas", "Boudica", "Legolas", "Joan of Arc", "Beowulf", "Attila the Hun", "Cleopatra", "Genghis Khan", "Hua Mulan", "William Wallace", "Ragnar Lothbrok", "Sun Tzu", "Zaraki Kenpachi", "Khal Drogo", "King Arthur", "Spartacus", "Achilles", "Okoye", "Captain America", "Black Panther"};
 
     public Warrior(String name, int hp, int stamina, int strength) {
-        super(name, hp);
-        setStamina(stamina);
-        setStrength(strength);
+        super(name);
+        if(hp < HP_MIN || hp > HP_MAX) {
+            throw new IllegalArgumentException("HP must be between " + HP_MIN + " and " + HP_MAX);
+        } else {
+            setHp(hp);
+        }
+        if(stamina < STAMINA_MIN || stamina > STAMINA_MAX) {
+            throw new IllegalArgumentException("Stamina must be between " + STAMINA_MIN + " and " + STAMINA_MAX);
+        } else {
+            setStamina(stamina);
+        }
+        if(strength < STRENGTH_MIN || strength > STRENGTH_MAX) {
+            throw new IllegalArgumentException("Strength must be between " + STRENGTH_MIN + " and " + STRENGTH_MAX);
+        } else {
+            setStrength(strength);
+        }
+    }
+
+    public Warrior() {
+        super(randomName());
+        setHp(randomInt(HP_MIN, HP_MAX));
+        setStamina(randomInt(STAMINA_MIN, STAMINA_MAX));
+        setStrength(randomInt(STRENGTH_MIN, STRENGTH_MAX));
     }
 
     public int getStamina() {
@@ -22,11 +45,7 @@ public class Warrior extends Character {
     }
 
     public void setStamina(int stamina) {
-        if(stamina < STAMINA_MIN || stamina > STAMINA_MAX) {
-            throw new IllegalArgumentException("Stamina must be between " + STAMINA_MIN + " and " + STAMINA_MAX);
-        } else {
-            this.stamina = stamina;
-        }
+        this.stamina = stamina;
     }
 
     public int getStrength() {
@@ -34,19 +53,11 @@ public class Warrior extends Character {
     }
 
     public void setStrength(int strength) {
-        if(strength < STRENGTH_MIN || strength > STRENGTH_MAX) {
-            throw new IllegalArgumentException("Strength must be between " + STRENGTH_MIN + " and " + STRENGTH_MAX);
-        } else {
-            this.strength = strength;
-        }
+        this.strength = strength;
     }
 
     public void setHp(int hp) {
-        if(hp < HP_MIN || hp > HP_MAX) {
-            throw new IllegalArgumentException("HP must be between " + HP_MIN + " and " + HP_MAX);
-        } else {
-            super.setHp(hp);
-        }
+        super.setHp(hp);
     }
 
     @Override
@@ -66,6 +77,8 @@ public class Warrior extends Character {
         }
     }
 
+    public Character clone(){return new Warrior(getName(), getHp(), getStamina(),getStrength());}
+
     public void heavyAttack(Character character) {
         setStamina(getStamina()-HEAVY_ATTACK_STAMINA);
         character.setHp(character.getHp()-getStrength());
@@ -77,5 +90,10 @@ public class Warrior extends Character {
 
         setStamina(getStamina()+STAMINA_RECOVER);
         character.setHp(character.getHp()-HP_LOSS);
+    }
+
+    public static String randomName() {
+        Random random = new Random();
+        return warriorsNames[random.nextInt(warriorsNames.length)];
     }
 }
