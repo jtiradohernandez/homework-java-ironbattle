@@ -64,22 +64,3 @@ abstract class Character implements Attacker {
         return this.attackName;
     }
 }
-
-
-
-/*
-Character class
-
-This class will have:
-
-    Variable called id of data type string, auto-generated (Private member)
-    Variable called name of data type string (Private member)
-    Variable called hp of data type int, random between 100-200 to warriors and 50-100 for wizards, representing the health points (Private member)
-    Variable called isAlive of data type boolean defaulted to true (Private member)
-
-
-    A "parameterized" constructor that takes name and hp (as parameters)
-
-    Public Getter functions to access these variables
-    Public Setter functions to change these variables
- */
