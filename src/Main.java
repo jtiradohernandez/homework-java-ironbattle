@@ -4,8 +4,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args)throws IOException{
         //Temporary creation of characters, can be deleted
-        Character char1 = new Warrior("guerrero",180,12,2);
-        Character char2  = new Wizard("wizard",100,12,2);
+        Character char1 = new Warrior("Darius",180,12,2);
+        Character char2  = new Wizard("Lux",100,12,2);
         Bard bard = new Bard();
 
         //Logs (as storytelling) begin
@@ -22,10 +22,10 @@ public class Main {
         Bard bard = new Bard();
 
         Character initChar1 = char1.clone();
-        bard.introducesFirstOpponent(initChar1.getName());
+        bard.introducesFirstOpponent(initChar1.getName(), initChar1.getCharacterClass());
 
         Character initChar2 = char2.clone();
-        bard.introducesSecondOpponent(initChar2.getName());
+        bard.introducesSecondOpponent(initChar2.getName(), initChar2.getCharacterClass());
 
         //Loop until one of the character wins
         while(!finished){

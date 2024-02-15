@@ -9,6 +9,7 @@ public class Wizard extends Character {
         super(name, hp); //TODO: check hp range (50-100)
         setMana(mana);
         setIntelligence(intelligence);
+        setCharacterClass("wizard");
     }
 
     public int getMana() {

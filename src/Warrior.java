@@ -28,7 +28,7 @@ public class Warrior extends Character {
         } else {
             setStrength(strength);
         }
-
+        setCharacterClass("warrior");
     }
 
     public int getStamina() {

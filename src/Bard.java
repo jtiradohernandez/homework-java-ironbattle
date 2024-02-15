@@ -14,11 +14,11 @@ public class Bard {
                 "Amidst the dappled shadows, beneath the canopy's verdant embrace, two figures emerge.\n" +
                 "Their resolve as unyielding as the ancient oaks that watch over their battle.\n");
     }
-    public void introducesFirstOpponent(String firstOpponentName) {
-        System.out.printf("Amidst the swirling mists of fate %s emerges, a harbinger of challenge and strife.\n", firstOpponentName);
+    public void introducesFirstOpponent(String firstOpponentName, String opponentClass) {
+        System.out.printf("Amidst the swirling mists of fate %s emerges, a %s, a harbinger of challenge and strife.\n", firstOpponentName, opponentClass);
     }
-    public void introducesSecondOpponent(String secondOpponentName) {
-        System.out.printf("And so does %s, a shadow cast from the depths of adversity.\n", secondOpponentName);
+    public void introducesSecondOpponent(String secondOpponentName, String opponentClass) {
+        System.out.printf("And so does %s, a %s, a shadow cast from the depths of adversity.\n", secondOpponentName, opponentClass);
     }
     public void announcesRound(int roundNumber) {
         System.out.printf("=========== ROUND %d ===========\n", roundNumber);
