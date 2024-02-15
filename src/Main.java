@@ -35,9 +35,11 @@ public class Main {
                 bard.announcesRound(roundCounter);
                 roundCounter += 1;
                 char1.attack(char2);
-                bard.narratesAttack(char1.getName(), char1.getAttackName());
+                bard.narratesAttack(char1.getName(), char1.getAttackName(), char1.getDamageDealt());
+                bard.narratesHp(char2.getName(), char2.getHp());
                 char2.attack(char1);
-                bard.narratesAttack(char2.getName(), char2.getAttackName());
+                bard.narratesAttack(char2.getName(), char2.getAttackName(), char2.getDamageDealt());
+                bard.narratesHp(char1.getName(), char1.getHp());
                 if (char1.getHp() <= 0) {
                     char1.setAlive(false);
                     bard.announcesOpponentDeath(char1.getName());
@@ -52,6 +54,7 @@ public class Main {
             if (!char2.isAlive()&&!char1.isAlive()){
                 //The battle result is a tie
                 bard.announcesTie();
+                roundCounter = 0;
                 char1=initChar1.clone();
                 char2=initChar2.clone();
 

@@ -56,6 +56,7 @@ public class Warrior extends Character {
         if (getStamina() == 0) {
             setStamina(getStamina()+2);
             setAttackName("cannot attack");
+            setDamageDealt(0);
         } else if (getStamina() < HEAVY_ATTACK_STAMINA) {
             weakAttack(character);
             setAttackName("launches a weak attack");
@@ -77,6 +78,7 @@ public class Warrior extends Character {
     public void heavyAttack(Character character) {
         setStamina(getStamina()-HEAVY_ATTACK_STAMINA);
         character.setHp(character.getHp()-getStrength());
+        setDamageDealt(getStrength());
     }
 
     public void weakAttack(Character character) {
@@ -85,5 +87,6 @@ public class Warrior extends Character {
 
         setStamina(getStamina()+STAMINA_RECOVER);
         character.setHp(character.getHp()-HP_LOSS);
+        setDamageDealt(HP_LOSS);
     }
 }

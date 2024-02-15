@@ -38,15 +38,16 @@ public class Wizard extends Character {
         if (getMana() == 0) {
             setMana(getMana()+2);
             setAttackName("cannot attack");
+            setDamageDealt(0);
         } else if (getMana() < FIREBALL_MANA) {
             staffHit(character);
-            setAttackName("casts a staff hit");
+            setAttackName("executes a staff hit");
         } else {
             int randomNum = rollDice();
 
             if (randomNum < 4) {
                 staffHit(character);
-                setAttackName("casts a staff hit");
+                setAttackName("executes a staff hit");
             } else {
                 fireball(character);
                 setAttackName("casts a fireball");
@@ -59,6 +60,7 @@ public class Wizard extends Character {
     private void fireball(Character character) {
         setMana(getMana()-FIREBALL_MANA);
         character.setHp(character.getHp()-getIntelligence());
+        setDamageDealt(getIntelligence());
     }
 
     private void staffHit(Character character) {
@@ -67,5 +69,6 @@ public class Wizard extends Character {
 
         setMana(getMana()+MANA_RECOVER);
         character.setHp(character.getHp()-HP_LOSS);
+        setDamageDealt(HP_LOSS);
     }
 }

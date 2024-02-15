@@ -23,8 +23,11 @@ public class Bard {
     public void announcesRound(int roundNumber) {
         System.out.printf("=========== ROUND %d ===========\n", roundNumber);
     }
-    public void narratesAttack(String opponentName, String attackName) {
-        System.out.printf("%s %s\n", opponentName, attackName);
+    public void narratesAttack(String opponentName, String attackName, int damageDealt) {
+        System.out.printf("%s %s and deals %d damage\n", opponentName, attackName, damageDealt);
+    }
+    public void narratesHp(String opponentName, int remainingHp) {
+        System.out.printf("%s's remaining health: %d\n", opponentName, remainingHp);
     }
     public void announcesOpponentDeath(String opponentName) {
         System.out.printf("Alas, the noble %s succumbs to fate's cruel embrace and dies.\n", opponentName);

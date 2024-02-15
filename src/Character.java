@@ -7,6 +7,7 @@ abstract class Character implements Attacker {
     private int hp;
     private boolean isAlive = true;
     private String attackName;
+    private int damageDealt;
 
     public Character(String name, int hp){
         setName(name);
@@ -62,5 +63,11 @@ abstract class Character implements Attacker {
     }
     public String getAttackName() {
         return this.attackName;
+    }
+    public void setDamageDealt(int damageDealt) {
+        this.damageDealt = damageDealt;
+    }
+    public int getDamageDealt() {
+        return this.damageDealt;
     }
 }
