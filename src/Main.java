@@ -35,9 +35,9 @@ public class Main {
                 bard.announcesRound(roundCounter);
                 roundCounter += 1;
                 char1.attack(char2);
-                bard.narratesAttack(char1.getName());
+                bard.narratesAttack(char1.getName(), char1.getAttackName());
                 char2.attack(char1);
-                bard.narratesAttack(char2.getName());
+                bard.narratesAttack(char2.getName(), char2.getAttackName());
                 if (char1.getHp() <= 0) {
                     char1.setAlive(false);
                     bard.announcesOpponentDeath(char1.getName());

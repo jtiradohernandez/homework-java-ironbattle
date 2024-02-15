@@ -6,6 +6,7 @@ abstract class Character implements Attacker {
     private String name;
     private int hp;
     private boolean isAlive = true;
+    private String attackName;
 
     public Character(String name, int hp){
         setName(name);
@@ -55,6 +56,13 @@ abstract class Character implements Attacker {
     }
 
     public abstract Character clone();
+
+    public void setAttackName(String attackName) {
+        this.attackName = attackName;
+    }
+    public String getAttackName() {
+        return this.attackName;
+    }
 }
 
 

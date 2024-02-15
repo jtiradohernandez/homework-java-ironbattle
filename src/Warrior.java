@@ -55,15 +55,19 @@ public class Warrior extends Character {
     public void attack(Character character) {
         if (getStamina() == 0) {
             setStamina(getStamina()+2);
+            setAttackName("cannot attack");
         } else if (getStamina() < HEAVY_ATTACK_STAMINA) {
             weakAttack(character);
+            setAttackName("launches a weak attack");
         } else {
             int randomNum = rollDice();
 
             if (randomNum < 4) {
                 weakAttack(character);
+                setAttackName("launches a weak attack");
             } else {
                 heavyAttack(character);
+                setAttackName("launches a heavy attack");
             }
         }
     }

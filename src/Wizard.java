@@ -3,7 +3,6 @@ public class Wizard extends Character {
     private int intelligence;
     private final int[] MANA_RANGE = {10, 50};
     private final int[] INTELLIGENCE_RANGE = {1, 50};
-
     private final int FIREBALL_MANA = 5;
 
     public Wizard(String name, int hp, int mana, int intelligence) {
@@ -38,15 +37,19 @@ public class Wizard extends Character {
     public void attack(Character character) {
         if (getMana() == 0) {
             setMana(getMana()+2);
+            setAttackName("cannot attack");
         } else if (getMana() < FIREBALL_MANA) {
             staffHit(character);
+            setAttackName("casts a staff hit");
         } else {
             int randomNum = rollDice();
 
             if (randomNum < 4) {
                 staffHit(character);
+                setAttackName("casts a staff hit");
             } else {
                 fireball(character);
+                setAttackName("casts a fireball");
             }
         }
     }
