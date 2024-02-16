@@ -13,6 +13,7 @@ public class Wizard extends Character {
         super(name, hp); //TODO: check hp range (50-100)
         setMana(mana);
         setIntelligence(intelligence);
+        setCharacterClass("wizard");
     }
 
     public Wizard () {
@@ -63,8 +64,10 @@ public class Wizard extends Character {
     public Character clone(){return new Wizard(getName(), getHp(), getMana(),getIntelligence());}
 
     private void fireball(Character character) {
+        final int HP_LOSS = getIntelligence();
         setMana(getMana()-FIREBALL_MANA);
-        character.setHp(character.getHp()-getIntelligence());
+        character.setHp(character.getHp() - HP_LOSS);
+        Bard.narratesAttack(this, "casts a fireball \uD83D\uDD25", HP_LOSS);
     }
 
     private void staffHit(Character character) {
@@ -73,6 +76,7 @@ public class Wizard extends Character {
 
         setMana(getMana()+MANA_RECOVER);
         character.setHp(character.getHp()-HP_LOSS);
+        Bard.narratesAttack(this, "executes a staff hit \uD83E\uDDF9", HP_LOSS);
     }
 
 

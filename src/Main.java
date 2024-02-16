@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -72,38 +71,56 @@ public class Main {
 
     public static void combat(Character char1, Character char2) {
         boolean finished = false;
+        char1.setTeam(Team.A);
+        char2.setTeam(Team.B);
+
+        Bard.introducesStory();
+
         Character initChar1 = char1.clone();
+
+        Bard.introducesFirstOpponent(char1);
+
         Character initChar2 = char2.clone();
 
+        Bard.introducesSecondOpponent(char2);
+
+        int roundCounter = 1;
         //Loop until one of the character wins
         while (!finished) {
 
             //Loop for the battle
             while (char1.isAlive() && char2.isAlive()) {
+                Bard.announcesRound(roundCounter++);
+
                 char1.attack(char2);
+                Bard.narratesHp(char2);
+
                 char2.attack(char1);
+                Bard.narratesHp(char1);
+
                 if (char1.getHp() <= 0) {
                     char1.setAlive(false);
+                    Bard.announcesOpponentDeath(char1);
                 }
                 if (char2.getHp() <= 0) {
                     char2.setAlive(false);
+                    Bard.announcesOpponentDeath(char2);
                 }
             }
 
             //Once the battle is finished, let's check who wins the battle
             if (!char2.isAlive() && !char1.isAlive()) {
                 //The battle result is a tie
-                System.out.println("The battle results in a tie! The battle will be repeated");
+                Bard.announcesTie();
+                roundCounter = 0;
                 char1 = initChar1.clone();
                 char2 = initChar2.clone();
 
             } else if (!char2.isAlive()) {
-                //Character 2 wins the battle
-                System.out.println("The player " + char1.getName() + " wins the battle!");
+                Bard.announcesOpponentVictory(char1);
                 finished = true;
             } else if (!char1.isAlive()) {
-                //Character 1 wins the battle
-                System.out.println("The player " + char2.getName() + " wins the battle!");
+                Bard.announcesOpponentVictory(char2);
                 finished = true;
             }
         }
