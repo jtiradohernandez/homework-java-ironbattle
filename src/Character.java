@@ -60,6 +60,8 @@ public abstract class Character implements Attacker {
 
     public abstract Character clone();
 
+    public abstract void attack(Character character);
+
     public static int randomInt (int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
