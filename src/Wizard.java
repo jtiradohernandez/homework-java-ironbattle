@@ -68,6 +68,7 @@ public class Wizard extends Character {
         }
     }
 
+    @Override
     public Character clone() {
         return new Wizard(getName(), getHp(), getMana(), getIntelligence());
     }
