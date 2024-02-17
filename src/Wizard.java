@@ -36,10 +36,11 @@ public class Wizard extends Character {
     }
 
     public void setMana(int mana) {
-        if (mana >= MANA_RANGE[0] && mana <= MANA_RANGE[1]) {
+        if (mana < MANA_RANGE[0] || mana > MANA_RANGE[1]) {
+            throw new IllegalArgumentException("Mana must be between " + MANA_RANGE[0] + " and " + MANA_RANGE[1]);
+        } else {
             this.mana = mana;
         }
-        //TODO: if number is not in the range, call new random number
     }
 
     public void setIntelligence(int intelligence) {
