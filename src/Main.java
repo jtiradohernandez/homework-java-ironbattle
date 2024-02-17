@@ -46,7 +46,7 @@ public class Main {
 
                         if (players != null) {
                             if (players.size() <2){
-                                System.out.println("Check CSV, Less than 2 Players imported");
+                                System.err.println("Check CSV, Less than 2 Players imported");
                             }else {
                                 char1 = players.get(0);
                                 char2 = players.get(1);
@@ -57,6 +57,10 @@ public class Main {
                         break;
                     case 4:
                         //Start the battle
+                        if (char1 == null || char2 == null) {
+                            System.err.println("You must create characters to start a combat");
+                            break;
+                        }
                         Combat.startCombat(char1, char2);
                         is_finish = true;
                         break;
