@@ -18,7 +18,6 @@ public class Wizard extends Character {
         }
         setMana(mana);
         setIntelligence(intelligence);
-        setCharacterClass("wizard");
     }
 
     public Wizard() {
@@ -71,6 +70,11 @@ public class Wizard extends Character {
     @Override
     public Character clone() {
         return new Wizard(getName(), getHp(), getMana(), getIntelligence());
+    }
+
+    @Override
+    public String getCharacterClass() {
+        return "wizard";
     }
 
     private void fireball(Character character) {

@@ -26,7 +26,6 @@ public class Warrior extends Character {
         } else {
             setStrength(strength);
         }
-        setCharacterClass("warrior");
     }
 
     public Warrior() {
@@ -73,6 +72,11 @@ public class Warrior extends Character {
     @Override
     public Character clone() {
         return new Warrior(getName(), getHp(), getStamina(), getStrength());
+    }
+
+    @Override
+    public String getCharacterClass() {
+        return "warrior";
     }
 
     public void heavyAttack(Character character) {
