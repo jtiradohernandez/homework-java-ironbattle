@@ -9,20 +9,33 @@ public class Wizard extends Character {
     private final int FIREBALL_MANA = 5;
     private static final String[] wizardsNames = new String[]{"Merlin", "Gandalf", "Severus", "Alatar", "Dumbledore", "Rincewind", "Voldemort", "Albus", "Asterope", "Astra", "Atlantes", "Beatrix", "Belinda", "Fawley", "Glinda", "Gwydion", "Jadis", "Jareth", "Morgan", "Potter", "Prospero", "Radagast", "Saruman", "Thoth-Amon"};
 
+    public static boolean validateInput(int hp, int mana, int intelligence){
+        if (hp < HP_RANGE[0] || hp > HP_RANGE[1]) {
+            System.err.println("HP must be between " + HP_RANGE[0] + " and " + HP_RANGE[1]);
+            return false;
+        } else if (mana < MANA_RANGE[0] || mana > MANA_RANGE[1]) {
+            System.err.println("Mana must be between " + MANA_RANGE[0] + " and " + MANA_RANGE[1]);
+            return false;
+        } else if (intelligence < INTELLIGENCE_RANGE[0] || intelligence > INTELLIGENCE_RANGE[1]) {
+            System.err.println("Intelligence must be between " + INTELLIGENCE_RANGE[0] + " and " + INTELLIGENCE_RANGE[1]);
+            return false;
+        }
+        return true;
+    }
     public Wizard(String name, int hp, int mana, int intelligence) {
         super(name);
         if (hp < HP_RANGE[0] || hp > HP_RANGE[1]) {
-            System.err.println("HP must be between " + HP_RANGE[0] + " and " + HP_RANGE[1]);
+            throw new IllegalArgumentException("HP must be between " + HP_RANGE[0] + " and " + HP_RANGE[1]);
         } else {
             setHp(hp);
         }
         if (mana < MANA_RANGE[0] || mana > MANA_RANGE[1]) {
-            System.err.println("Mana must be between " + MANA_RANGE[0] + " and " + MANA_RANGE[1]);
+            throw new IllegalArgumentException("Mana must be between " + MANA_RANGE[0] + " and " + MANA_RANGE[1]);
         } else {
             setMana(mana);
         }
         if (intelligence < INTELLIGENCE_RANGE[0] || intelligence > INTELLIGENCE_RANGE[1]) {
-            System.err.println("Intelligence must be between " + INTELLIGENCE_RANGE[0] + " and " + INTELLIGENCE_RANGE[1]);
+            throw new IllegalArgumentException("Intelligence must be between " + INTELLIGENCE_RANGE[0] + " and " + INTELLIGENCE_RANGE[1]);
         } else {
             setIntelligence(intelligence);
         }

@@ -35,16 +35,29 @@ public class ImportCharactersFromCSV {
                 if (characterType.equals("Wizard")) {
                     int mana = Integer.parseInt(characterData[3]);
                     int intelligence = Integer.parseInt(characterData[4]);
-                    Character wizard = new Wizard(name, hp, mana, intelligence);
-                    characters_list.add(wizard);
+                    if (Wizard.validateInput(hp,mana,intelligence)) {
+                        Character wizard = new Wizard(name, hp, mana, intelligence);
+                        characters_list.add(wizard);
+                    }
+                    else{
+                        System.err.println("Wizard not correctly created");
+                    }
 
                 }
 
                 if (characterType.equals("Warrior")) {
                     int stamina = Integer.parseInt(characterData[5]);
                     int strength = Integer.parseInt(characterData[6]);
-                    Character warrior = new Warrior(name, hp, stamina, strength);
-                    characters_list.add(warrior);
+                    if (Warrior.validateInput(hp,stamina,strength)){
+                        Character warrior = new Warrior(name, hp, stamina, strength);
+                        characters_list.add(warrior);
+                    }
+                    else{
+                        System.err.println("Warrior not correctly created");
+
+                    }
+
+
                 }
             }
             scanner.close();
