@@ -1,7 +1,5 @@
 import java.util.Random;
 
-// A Warrior is a Character that fights by attacking. Attacks inflict damage and in order to do one,
-// stamina is required.
 public class Warrior extends Character {
     private int stamina;
     private int strength;
@@ -16,17 +14,17 @@ public class Warrior extends Character {
 
     public Warrior(String name, int hp, int stamina, int strength) {
         super(name);
-        if(hp < HP_MIN || hp > HP_MAX) {
+        if (hp < HP_MIN || hp > HP_MAX) {
             throw new IllegalArgumentException("HP must be between " + HP_MIN + " and " + HP_MAX);
         } else {
             setHp(hp);
         }
-        if(stamina < STAMINA_MIN || stamina > STAMINA_MAX) {
+        if (stamina < STAMINA_MIN || stamina > STAMINA_MAX) {
             throw new IllegalArgumentException("Stamina must be between " + STAMINA_MIN + " and " + STAMINA_MAX);
         } else {
             setStamina(stamina);
         }
-        if(strength < STRENGTH_MIN || strength > STRENGTH_MAX) {
+        if (strength < STRENGTH_MIN || strength > STRENGTH_MAX) {
             throw new IllegalArgumentException("Strength must be between " + STRENGTH_MIN + " and " + STRENGTH_MAX);
         } else {
             setStrength(strength);
@@ -57,14 +55,10 @@ public class Warrior extends Character {
         this.strength = strength;
     }
 
-    public void setHp(int hp) {
-        super.setHp(hp);
-    }
-
     @Override
     public void attack(Character character) {
         if (getStamina() == 0) {
-            setStamina(getStamina()+2);
+            setStamina(getStamina() + 2);
             Bard.narratesRest(this);
         } else if (getStamina() < HEAVY_ATTACK_STAMINA) {
             weakAttack(character);
@@ -79,12 +73,15 @@ public class Warrior extends Character {
         }
     }
 
-    public Character clone(){return new Warrior(getName(), getHp(), getStamina(),getStrength());}
+    @Override
+    public Character clone() {
+        return new Warrior(getName(), getHp(), getStamina(), getStrength());
+    }
 
     public void heavyAttack(Character character) {
         final int HP_LOSS = getStrength();
 
-        setStamina(getStamina()-HEAVY_ATTACK_STAMINA);
+        setStamina(getStamina() - HEAVY_ATTACK_STAMINA);
         character.setHp(character.getHp() - HP_LOSS);
         Bard.narratesAttack(this, "launches a heavy attack ⚔\uFE0F", HP_LOSS);
     }
@@ -93,8 +90,8 @@ public class Warrior extends Character {
         final int STAMINA_RECOVER = 1;
         final int HP_LOSS = getStrength() / 2;
 
-        setStamina(getStamina()+STAMINA_RECOVER);
-        character.setHp(character.getHp()-HP_LOSS);
+        setStamina(getStamina() + STAMINA_RECOVER);
+        character.setHp(character.getHp() - HP_LOSS);
         Bard.narratesAttack(this, "launches a weak attack \uD83D\uDD2A", HP_LOSS);
     }
 
