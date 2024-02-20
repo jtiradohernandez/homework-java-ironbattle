@@ -41,7 +41,7 @@ public class Bard {
                 "Once more, the clash of titans echoes across the realm, as the cycle of battle begins anew.\n");
     }
     public static void narratesRest(Character attacker) {
-        System.out.printf("%s cannot attack \uD83E\uDDD8\n", attacker.getName());
+        System.out.printf("%s cannot attack \uD83E\uDDD8\n", getStyledNameForCharacter(attacker));
     }
 
     private static String getStyledNameForCharacter(Character character) {
